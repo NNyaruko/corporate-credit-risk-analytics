@@ -1,0 +1,6 @@
+step,count,detail
+raw_financial_rows,6401,Includes one exact duplicate and two incomplete borrower records
+exact_duplicates_removed,1,All columns match; retain first occurrence
+matched_borrower_rows,6400,One-to-one borrower/date join; many-to-one macro/date join
+incomplete_rows_excluded,2,Complete-case rule; no label-driven removal or imputation
+model_rows,6398,Final complete-case cohort; all outcomes mature by 2025-12-31

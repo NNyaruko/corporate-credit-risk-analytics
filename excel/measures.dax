@@ -1,0 +1,37 @@
+// Optional Power Pivot / Power BI measures. Create each measure separately.
+// Table: CreditData, imported using PowerQuery.m. These are base-case source PDs.
+// They do not follow the independent scenario selector in the review workbook.
+
+Borrowers := COUNTROWS(CreditData)
+
+EAD Proxy CNY m := SUM(CreditData[debt_cny_m])
+
+Mean PD := AVERAGE(CreditData[pd_logistic])
+
+Debt Weighted PD :=
+DIVIDE(
+    SUMX(CreditData, CreditData[debt_cny_m] * CreditData[pd_logistic]),
+    [EAD Proxy CNY m]
+)
+
+Observed Default Rate := AVERAGE(CreditData[default_12m])
+
+Illustrative LGD := 0.45
+
+Illustrative EL Proxy CNY m :=
+SUMX(
+    CreditData,
+    CreditData[debt_cny_m] * CreditData[pd_logistic] * [Illustrative LGD]
+)
+
+Elevated or High Borrowers :=
+CALCULATE(
+    [Borrowers],
+    FILTER(CreditData, CreditData[pd_logistic] >= 0.15)
+)
+
+Elevated or High Share := DIVIDE([Elevated or High Borrowers], [Borrowers])
+
+// Format Mean PD, Debt Weighted PD, Observed Default Rate, Illustrative LGD,
+// and Elevated or High Share as percentages. Amounts are already CNY millions.
+// These measures retain report filter context; do not sum displayed rate rows.

@@ -1,0 +1,4 @@
+borrower_id,snapshot_date,reason
+SYN-000101,2017-03-31,Exact duplicate removed
+SYN-006399,2024-12-31,Missing EBITDA or debt service; excluded before modeling
+SYN-006400,2024-12-31,Missing EBITDA or debt service; excluded before modeling

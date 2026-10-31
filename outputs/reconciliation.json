@@ -1,0 +1,10 @@
+{
+  "raw_rows": 6401,
+  "exact_duplicate_rows": 1,
+  "unique_borrowers": 6400,
+  "excluded_incomplete": 2,
+  "model_rows": 6398,
+  "unique_debt_cny_m": 332793.56903692,
+  "excluded_debt_cny_m": 43.6417375,
+  "model_debt_cny_m": 332749.92729942
+}

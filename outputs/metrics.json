@@ -1,0 +1,181 @@
+{
+  "seed": 2026,
+  "dataset": "Entirely synthetic independent borrowers and macro observations",
+  "n_model_rows": 6398,
+  "split_summary": [
+    {
+      "split": "train",
+      "n": 2400,
+      "defaults": 490,
+      "default_rate": 0.20416666666666666,
+      "min_date": "2017-03-31",
+      "max_date": "2019-12-31"
+    },
+    {
+      "split": "embargo",
+      "n": 1600,
+      "defaults": 345,
+      "default_rate": 0.215625,
+      "min_date": "2020-03-31",
+      "max_date": "2022-12-31"
+    },
+    {
+      "split": "validation",
+      "n": 800,
+      "defaults": 167,
+      "default_rate": 0.20875,
+      "min_date": "2021-03-31",
+      "max_date": "2021-12-31"
+    },
+    {
+      "split": "test",
+      "n": 1598,
+      "defaults": 365,
+      "default_rate": 0.2284105131414268,
+      "min_date": "2023-03-31",
+      "max_date": "2024-12-31"
+    }
+  ],
+  "features": [
+    "leverage",
+    "dscr",
+    "interest_rate_pct",
+    "gdp_growth_pct",
+    "past_due_30d"
+  ],
+  "thresholds": {
+    "Logistic": 0.25,
+    "Decision tree": 0.21
+  },
+  "selected_tree": {
+    "max_depth": 5,
+    "min_samples_leaf": 80,
+    "validation_roc_auc": 0.7097180047487963,
+    "validation_brier": 0.15106988880573913
+  },
+  "logistic_fit": {
+    "n_training": 2400,
+    "n_parameters": 6,
+    "converged_by_score": true,
+    "optimizer_success": true,
+    "optimizer_message": "Optimization terminated successfully.",
+    "max_absolute_score": 9.280881663187301e-08,
+    "minimum_hessian_eigenvalue": 5.636673800930681,
+    "log_likelihood": -1081.2426864343788,
+    "covariance": "HC1: n/(n-k) times independent-observation score sandwich"
+  },
+  "test_metrics": [
+    {
+      "model": "Logistic",
+      "split": "test",
+      "n": 1598,
+      "defaults": 365,
+      "default_rate": 0.2284105131414268,
+      "mean_pd": 0.2189705424630353,
+      "roc_auc": 0.7445566554455666,
+      "average_precision": 0.45421323631061616,
+      "brier_score": 0.15390437808388238,
+      "log_loss": 0.47241868895812533,
+      "threshold": 0.25,
+      "precision": 0.42386831275720166,
+      "recall": 0.5643835616438356,
+      "f1": 0.48413631022326675,
+      "tn": 953,
+      "fp": 280,
+      "fn": 159,
+      "tp": 206
+    },
+    {
+      "model": "Decision tree",
+      "split": "test",
+      "n": 1598,
+      "defaults": 365,
+      "default_rate": 0.2284105131414268,
+      "mean_pd": 0.20539738698426305,
+      "roc_auc": 0.7106855981068559,
+      "average_precision": 0.38508818859115557,
+      "brier_score": 0.15943489884905412,
+      "log_loss": 0.48706931985027047,
+      "threshold": 0.21,
+      "precision": 0.36977491961414793,
+      "recall": 0.6301369863013698,
+      "f1": 0.46605876393110435,
+      "tn": 841,
+      "fp": 392,
+      "fn": 135,
+      "tp": 230
+    }
+  ],
+  "scenarios": [
+    {
+      "scenario": "Base",
+      "n": 1598,
+      "mean_pd": 0.2189705424630353,
+      "exposure_weighted_pd": 0.25756808910129114,
+      "ead_proxy_cny_m": 84397.19402313,
+      "lgd": 0.45,
+      "ecl_proxy_cny_m": 9782.110795521827,
+      "high_risk_count": 333,
+      "leverage_add": 0.0,
+      "dscr_multiplier": 1.0,
+      "interest_rate_add_pp": 0.0,
+      "gdp_growth_add_pp": 0.0,
+      "pd_change_pp": 0.0,
+      "ecl_change_cny_m": 0.0
+    },
+    {
+      "scenario": "Adverse",
+      "n": 1598,
+      "mean_pd": 0.3197254817645437,
+      "exposure_weighted_pd": 0.36781381523138795,
+      "ead_proxy_cny_m": 84397.19402313,
+      "lgd": 0.45,
+      "ecl_proxy_cny_m": 13969.10426781201,
+      "high_risk_count": 743,
+      "leverage_add": 0.05,
+      "dscr_multiplier": 0.85,
+      "interest_rate_add_pp": 1.0,
+      "gdp_growth_add_pp": -2.0,
+      "pd_change_pp": 10.07549393015084,
+      "ecl_change_cny_m": 4186.9934722901835
+    },
+    {
+      "scenario": "Severe",
+      "n": 1598,
+      "mean_pd": 0.44191091917452235,
+      "exposure_weighted_pd": 0.49530772359017616,
+      "ead_proxy_cny_m": 84397.19402313,
+      "lgd": 0.45,
+      "ecl_proxy_cny_m": 18811.161922047722,
+      "high_risk_count": 1270,
+      "leverage_add": 0.1,
+      "dscr_multiplier": 0.7,
+      "interest_rate_add_pp": 2.0,
+      "gdp_growth_add_pp": -4.0,
+      "pd_change_pp": 22.294037671148708,
+      "ecl_change_cny_m": 9029.051126525896
+    }
+  ],
+  "reconciliation": {
+    "raw_rows": 6401,
+    "exact_duplicate_rows": 1,
+    "unique_borrowers": 6400,
+    "excluded_incomplete": 2,
+    "model_rows": 6398,
+    "unique_debt_cny_m": 332793.56903692,
+    "excluded_debt_cny_m": 43.6417375,
+    "model_debt_cny_m": 332749.92729942
+  },
+  "maximum_training_vif": 1.4231319447760533,
+  "lgd": 0.45,
+  "outcome_maturity": "2025-12-31",
+  "training_end": "2019-12-31",
+  "validation_end": "2021-12-31",
+  "test_end": "2024-12-31",
+  "embargo_years": [
+    2020,
+    2022
+  ],
+  "model_fit_asof": "2021-01-01",
+  "selection_asof": "2023-01-01"
+}

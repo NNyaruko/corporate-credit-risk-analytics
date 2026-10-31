@@ -1,0 +1,54 @@
+{
+  "features": [
+    "leverage",
+    "dscr",
+    "interest_rate_pct",
+    "gdp_growth_pct",
+    "past_due_30d"
+  ],
+  "terms": [
+    "Intercept",
+    "leverage",
+    "dscr",
+    "interest_rate_pct",
+    "gdp_growth_pct",
+    "past_due_30d"
+  ],
+  "coefficients": {
+    "Intercept": -2.315728487803265,
+    "leverage": 2.7996164986453316,
+    "dscr": -0.5173996812355474,
+    "interest_rate_pct": 0.16665065676579002,
+    "gdp_growth_pct": -0.07197490516166342,
+    "past_due_30d": 1.4961021750978807
+  },
+  "threshold": 0.25,
+  "risk_bands": {
+    "Low": "0 <= p < 0.05",
+    "Moderate": "0.05 <= p < 0.15",
+    "Elevated": "0.15 <= p < 0.30",
+    "High": "0.30 <= p <= 1"
+  },
+  "scenarios": {
+    "Base": {
+      "leverage_add": 0.0,
+      "dscr_multiplier": 1.0,
+      "interest_rate_add_pp": 0.0,
+      "gdp_growth_add_pp": 0.0
+    },
+    "Adverse": {
+      "leverage_add": 0.05,
+      "dscr_multiplier": 0.85,
+      "interest_rate_add_pp": 1.0,
+      "gdp_growth_add_pp": -2.0
+    },
+    "Severe": {
+      "leverage_add": 0.1,
+      "dscr_multiplier": 0.7,
+      "interest_rate_add_pp": 2.0,
+      "gdp_growth_add_pp": -4.0
+    }
+  },
+  "lgd": 0.45,
+  "fitted_on": "train only; no refit after validation"
+}

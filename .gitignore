@@ -1,0 +1,16 @@
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.DS_Store
+Thumbs.db
+~$*
+node_modules/
+.ipynb_checkpoints/
+outputs/r/
+outputs/sas/
+*.log
+*.lst
+.slide-build/
+outputs/excel-build/
+.vs/
